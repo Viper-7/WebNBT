@@ -11,8 +11,14 @@ function printNBT($nbt, $recursing = false) {
 	
 	if(in_array($nbt['type'], array(7, 10, 11))) {
 		echo '<ul>';
-		foreach($nbt['value'] as $element) {
-			printNBT($element, true);
+		foreach($nbt['value'] as $child) {
+			if(is_array($child)) {
+				printNBT($child, true);
+			} else {
+				echo '<li>';
+				print_r($child);
+				echo '</li>';
+			}
 		}
 		echo '</ul>';
 	} elseif($nbt['type'] == 9) {
@@ -44,9 +50,11 @@ function printList($list) {
 			}
 			echo '</li>';
 		} elseif(is_array($child)) {
-			printNBT($child);
+			printNBT($child, true);
 		} else {
+			echo '<li>';
 			print_r($child);
+			echo '</li>';
 		}
 	}
 	echo '</ul>';
