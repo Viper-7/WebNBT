@@ -7,7 +7,7 @@ $nbt = new NBT();
 
 function printNBT($nbt, $recursing = false) {
 	if(!$recursing) echo '<ul>';
-	echo '<li>' . ($nbt['name'] ?: 'NULL') . '(' . $nbt['type'] . ')';
+	echo '<li>' . ($nbt['name'] ?: 'NULL');
 	
 	if(in_array($nbt['type'], array(7, 10, 11))) {
 		echo '<ul>';
@@ -43,8 +43,10 @@ function printList($list) {
 				printList($child);
 			}
 			echo '</li>';
-		} else {
+		} elseif(is_array($child)) {
 			printNBT($child);
+		} else {
+			print_r($child);
 		}
 	}
 	echo '</ul>';
