@@ -6,12 +6,13 @@
 }
 
 .accord ul li {
-	display: inline-block;
-	min-width: 200px;
+	background-color: #ffffff;
 }
 .accord ul li a {
 	color: #6E440A;
 	text-decoration: none;
+	display: inline-block;
+	min-width: 200px;
 }
 
 .accord ul li:nth-child(odd) {
