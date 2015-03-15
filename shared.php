@@ -5,9 +5,17 @@
 	list-style-type: none;
 }
 
+.accord ul li {
+	display: inline-block;
+	min-width: 200px;
+}
 .accord ul li a {
 	color: #6E440A;
 	text-decoration: none;
+}
+
+.accord ul li:nth-child(odd) {
+	background-color: #f2f2f2;
 }
 
 .accord ul li a:hover {
