@@ -18,7 +18,7 @@ if($input['name']) {
 	echo '<ul>';
 	foreach($names as $elem) {
 		if(file_exists("{$world}/playerdata/{$elem->uuid}.dat")) {
-			echo "<li><a href=\"?edit=playerdata&player={$elem->name}\">{$elem->name}</a></li>";
+			echo "<li><a href=\"?edit=playerdata&name={$elem->name}\">{$elem->name}</a></li>";
 		}
 	}
 	echo '</ul>';
