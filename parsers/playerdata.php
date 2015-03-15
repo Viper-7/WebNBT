@@ -1,12 +1,25 @@
 <?php
-if($input['uuid']) {
-	$data = $nbt->loadFile("{$world}/playerdata/{$input['uuid']}.dat");
+if($input['name']) {
+	$names = json_decode(file_get_contents("{$world}/../whitelist.json"));
 
-	printNBT($data);
+	foreach($names as $elem) {
+		if($input['name'] == $elem->name) {
+			$data = $nbt->loadFile("{$world}/playerdata/{$elem->uuid}.dat");
+			break;
+		}
+	}
+
+	if(isset($data))
+		printNBT($data);
+	else
+		echo "That user was not found";
 } else {
 	$names = json_decode(file_get_contents("{$world}/../whitelist.json"));
 	echo '<ul>';
 	foreach($names as $elem) {
-		echo "<li><a href=\"?edit=playerdata&uuid={$elem->uuid}\">{$elem->name}</a></li>";
+		if(file_exists("{$world}/playerdata/{$elem->uuid}.dat")) {
+			echo "<li><a href=\"?edit=playerdata&player={$elem->name}\">{$elem->name}</a></li>";
+		}
 	}
+	echo '</ul>';
 }

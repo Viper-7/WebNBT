@@ -1,7 +1,7 @@
 <?php
 include 'shared.php';
 
-$defaults = array('edit' => '', 'uuid' => '');
+$defaults = array('edit' => '', 'name' => '');
 $input = array_intersect_key($_GET, $defaults) + $defaults;
 list($first, $rest) = explode('/', $input['edit'], 2) + array('','');
 
