@@ -1,6 +1,6 @@
 <?php
-if($uuid) {
-	$data = $nbt->loadFile("{$world}/playerdata/{$uuid}.dat");
+if($input['uuid']) {
+	$data = $nbt->loadFile("{$world}/playerdata/{$input['uuid']}.dat");
 
 	printNBT($data);
 } else {
